@@ -4,10 +4,42 @@ using System.Diagnostics;
 
 namespace OOPSandkasse
 {
+    class MinException : Exception
+    {
+        public string Message { get; set; }
+        public MinException(string message) : base(message)
+        {
+            Message = message;
+        }
+        public MinException() { Console.WriteLine("Test"); }
+    }
     internal class Program
     {
         static void Main(string[] args)
         {
+            try
+            {
+                int valg = Convert.ToInt32(Metode(null));
+            }
+            catch(MinException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.GetType());
+            }
+            finally
+            {
+                Console.WriteLine("Hejsa");
+            }
+            Console.ReadKey();
+
             Box box1 = new Box(BoxType.lille);
             Box box2 = new Box(BoxType.lille);
             Box box3 = box1 + box2;
@@ -139,6 +171,11 @@ namespace OOPSandkasse
 
             ////Console.WriteLine(halimeBil.Mærke);
             //Console.ReadKey();
+        }
+
+        private static bool Metode(string v)
+        {
+            throw new MinException("Metode Fejl");
         }
     }
 }
