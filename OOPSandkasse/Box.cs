@@ -13,33 +13,49 @@ namespace OOPSandkasse
         stor,
         error
     }
-    internal class Box
+    internal class Box : IComparable<Box>
     {
-        public Box(BoxType bType)
+        public Box()
         {
+            
+        }
+        public Box(double højde, double bredde, double længde, BoxType bType)
+        {
+            Højde = højde;
+            Bredde = bredde;
+            Længde = længde;
             Type = bType;
         }
+        public double Højde { get; set; }
+        public double Bredde { get; set; }
+        public double Længde { get; set; }
         public BoxType Type { get; set; }
-        
-        // Private field med Underscore
-        private int _myVar;
-        public int MyProperty => _myVar;
+
+        public override string ToString()
+        {
+            return $"Højde: {Højde} Bredde: {Bredde} Længde: {Længde}. Box type: {Type} ";
+        }
+
+        public double GetVolume()
+        {
+            return Højde * Bredde * Længde;
+        }
+
+        public int CompareTo(Box? other)
+        {
+            return Type.CompareTo(other.Type);
+        }
+
         public static Box operator +(Box a, Box b)
         {
-            double test = (6 + 10) * 0.95;
+            //double test = (6 + 10) * 0.95;
             if(a.Type == BoxType.lille && b.Type == BoxType.lille)
             {
-                return new Box(BoxType.mellem);
+                return new Box((a.Højde + b.Højde) * 0.95, 
+                    (a.Bredde + b.Bredde) * 0.95, (a.Længde + b.Længde) * 0.95, BoxType.mellem);
             }
-            else if (a.Type == BoxType.mellem && b.Type == BoxType.mellem)
-            {
-                return new Box(BoxType.stor);
-            }
-            else if (a.Type != b.Type)
-            {
-                return new Box(BoxType.error);
-            }
-            else return new Box(BoxType.lille);
+            else return new Box((a.Højde + b.Højde) * 0.95,
+                    (a.Bredde + b.Bredde) * 0.95, (a.Længde + b.Længde) * 0.95, BoxType.stor);
         }
     }
 }

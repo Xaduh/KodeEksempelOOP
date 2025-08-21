@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OOPSandkasse
 {
-    internal class PersonOld : IComparable<PersonOld>, IComparer<PersonOld>
+    internal class PersonOld : IComparable<PersonOld>
     {
         public string Navn { get; set; }
         public string Efternavn { get; set; }

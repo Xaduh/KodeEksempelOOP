@@ -17,8 +17,21 @@ namespace OOPSandkasse
     {
         static void Main(string[] args)
         {
-            Box box = new Box(BoxType.lille);
-            box.MyProperty = 1;
+            Box box = new Box(1, 2, 3, BoxType.mellem);
+            Box box2 = new Box(2, 4, 6, BoxType.lille);
+            Box box3 = new Box(3, 6, 9, BoxType.lille);
+            List<Box> boxList = new List<Box>();
+            boxList.Add(box);
+            boxList.Add(box2);
+            boxList.Add(box3);
+            boxList.Sort();
+            foreach (var item in boxList)
+            {
+                Console.WriteLine(item.ToString());
+                //Console.WriteLine(item);
+            }
+            Console.ReadKey();
+
             Person test = new Person();
             test.fornavn = "Oliver";
             test.efternavn = "Holst";
@@ -58,15 +71,6 @@ namespace OOPSandkasse
             {
                 Console.WriteLine("Hejsa");
             }
-            Console.ReadKey();
-
-            Box box1 = new Box(BoxType.lille);
-            Box box2 = new Box(BoxType.lille);
-            Box box3 = box1 + box2;
-
-            Console.WriteLine(box1.Type);
-            Console.WriteLine(box2.Type);
-            Console.WriteLine(box3.Type);
             Console.ReadKey();
 
             PersonOld person1 = new PersonOld();
