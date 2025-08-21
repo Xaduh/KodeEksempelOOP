@@ -17,22 +17,25 @@ namespace OOPSandkasse
     {
         public Box(BoxType bType)
         {
-            boxType = bType;
+            Type = bType;
         }
-
-        public BoxType boxType { get; set; }
-
+        public BoxType Type { get; set; }
+        
+        // Private field med Underscore
+        private int _myVar;
+        public int MyProperty => _myVar;
         public static Box operator +(Box a, Box b)
         {
-            if(a.boxType == BoxType.lille && b.boxType == BoxType.lille)
+            double test = (6 + 10) * 0.95;
+            if(a.Type == BoxType.lille && b.Type == BoxType.lille)
             {
                 return new Box(BoxType.mellem);
             }
-            else if (a.boxType == BoxType.mellem && b.boxType == BoxType.mellem)
+            else if (a.Type == BoxType.mellem && b.Type == BoxType.mellem)
             {
                 return new Box(BoxType.stor);
             }
-            else if (a.boxType != b.boxType)
+            else if (a.Type != b.Type)
             {
                 return new Box(BoxType.error);
             }

@@ -17,6 +17,26 @@ namespace OOPSandkasse
     {
         static void Main(string[] args)
         {
+            Box box = new Box(BoxType.lille);
+            box.MyProperty = 1;
+            Person test = new Person();
+            test.fornavn = "Oliver";
+            test.efternavn = "Holst";
+            test.postnr = 2750;
+            test.adresse = "Guldblommevej 5";
+            test.by = "Ballerup";
+
+            Person test2 = new Person();
+            test2.fornavn = "Oliver";
+            test2.efternavn = "Holst";
+            test2.postnr = 2750;
+            test2.adresse = "Guldblommevej 5";
+            test2.by = "Ballerup";
+            test2.skrivPersonInstans();
+
+            Person.skrivInstans(test2);
+            Console.ReadKey();
+
             try
             {
                 int valg = Convert.ToInt32(Metode(null));
@@ -44,28 +64,28 @@ namespace OOPSandkasse
             Box box2 = new Box(BoxType.lille);
             Box box3 = box1 + box2;
 
-            Console.WriteLine(box1.boxType);
-            Console.WriteLine(box2.boxType);
-            Console.WriteLine(box3.boxType);
+            Console.WriteLine(box1.Type);
+            Console.WriteLine(box2.Type);
+            Console.WriteLine(box3.Type);
             Console.ReadKey();
 
-            Person person1 = new Person();
+            PersonOld person1 = new PersonOld();
             person1.Navn = "Abraham";
             person1.Efternavn = "Lincoln";
             person1.Adresse = "Hvide Hus";
             person1.Tlf = "12345678";
 
-            Person person2 = new Person();
+            PersonOld person2 = new PersonOld();
             person2.Navn = "Gilbert";
             person2.Efternavn = "Skysovs";
 
-            Person person3 = new Person();
+            PersonOld person3 = new PersonOld();
             person3.Navn = "Blomme";
 
-            Person person4 = new Person();
+            PersonOld person4 = new PersonOld();
             person4.Navn = "Flomme";
 
-            Person person5 = new Person();
+            PersonOld person5 = new PersonOld();
             person5.Navn = "Alexandre";
 
 
@@ -79,11 +99,11 @@ namespace OOPSandkasse
             Firkant firkant = new Firkant();
             figur.Rumfang();
 
-            List<Person> people = new List<Person>();
-            people.AddRange(new List<Person> { person1, person2, person3, person4, person5});
+            List<PersonOld> people = new List<PersonOld>();
+            people.AddRange(new List<PersonOld> { person1, person2, person3, person4, person5});
             people.Sort();
 
-            Dictionary<string, Person> pairs = new Dictionary<string, Person>();
+            Dictionary<string, PersonOld> pairs = new Dictionary<string, PersonOld>();
             pairs.Add("Olle@gmail.com", person1);
 
             foreach (var item in people)

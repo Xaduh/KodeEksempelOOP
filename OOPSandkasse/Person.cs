@@ -1,40 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OOPSandkasse
 {
-    internal class Person : IComparable<Person>
+    internal class Person
     {
-        public string Navn { get; set; }
-        public string Efternavn { get; set; }
-        public string Adresse { get; set; }
-        public string Tlf { get; set; }
-
-        public void OpretPerson(string fornavn, string efternavn, string adresse, string telefon)
+        public Person()
         {
-            Navn = fornavn;
-            Efternavn = efternavn;
-            Adresse = adresse;  
-            Tlf = telefon;
+            tæller = tæller + 1;
+            ID = tæller;
+        }
+        public static int tæller;
+        // Field
+        private int ID;
+        public string fornavn { get; set; }
+        public string efternavn { get; set; }
+        public string adresse { get; set; }
+        public int postnr { get; set; }
+        public string by { get; set; }
+
+        public int getID()
+        {
+            return ID;
         }
 
-        public void UdskrivPerson()
-        {
-            Console.WriteLine($"Navn: {Navn} {Efternavn},Adresse: {Adresse},Telefon nummer: {Tlf}");
-        }
-
-        public static void WritePerson(Person person)
+        public void skrivPersonInstans()
         {
 
         }
 
-        public int CompareTo(Person? other)
+        public static void skrivInstans(Person person)
         {
-            return Navn.CompareTo(other.Navn);
+            Console.WriteLine(person.ID);
+            Console.WriteLine(person.fornavn);
+            Console.WriteLine(person.efternavn);
+            Console.WriteLine(tæller);
         }
     }
 }

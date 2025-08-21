@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPSandkasse
 {
-    internal class Kunde : Person
+    internal class Kunde : PersonOld
     {
         //public string Navn { get; set; }
         //public string Efternavn { get; set; }
