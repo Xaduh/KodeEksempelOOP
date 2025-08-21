@@ -18,17 +18,31 @@ namespace OOPSandkasse
         static void Main(string[] args)
         {
             Box box = new Box(1, 2, 3, BoxType.mellem);
-            Box box2 = new Box(2, 4, 6, BoxType.lille);
-            Box box3 = new Box(3, 6, 9, BoxType.lille);
+            Box box3 = new Box(2, 4, 6, BoxType.lille);
+            Box box2 = new Box(3, 2, 2, BoxType.lille);
             List<Box> boxList = new List<Box>();
             boxList.Add(box);
-            boxList.Add(box2);
             boxList.Add(box3);
+            boxList.Add(box2);
             boxList.Sort();
+            Console.WriteLine("Sort metode som er i Box klassen:\n");
             foreach (var item in boxList)
             {
                 Console.WriteLine(item.ToString());
                 //Console.WriteLine(item);
+            }
+            Console.WriteLine("\n\nSort metode som er i BoxComparer filen, BoxHeightComparer:\n");
+            boxList.Sort(new BoxHeightComparer());
+            foreach (var item in boxList)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("\n\nSort metode som er i BoxComparer filen, BoxHeightComparer:\n");
+            boxList.Sort(new BoxVolumeComparer());
+            foreach (var item in boxList)
+            {
+                // Kalder selv på ToString, når vi bare kalder på entiteten.
+                Console.WriteLine(item);
             }
             Console.ReadKey();
 
